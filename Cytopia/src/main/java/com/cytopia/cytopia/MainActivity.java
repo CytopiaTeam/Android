@@ -19,9 +19,9 @@ public class MainActivity extends org.libsdl.app.SDLActivity {
                 "SDL2_image",
                 "SDL2_ttf",
                 "noise",
-//                "openal",
-//                "vorbis",
-//                "ogg",
+                "openal",
+                "vorbis",
+                "ogg",
                 "Cytopia"
         };
     }
