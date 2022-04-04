@@ -54,8 +54,6 @@ dependencies {
     // Uncomment a line in ../gradle.settings as well
     implementation project(':SDL2')
     implementation project(':libnoise')
-//    implementation project(':zlib')
-//    implementation project(':libpng')
 
 //    implementation project(':openal-soft')
 //    implementation project(':libvorbis')

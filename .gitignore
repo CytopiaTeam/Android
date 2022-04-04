@@ -7,9 +7,4 @@
 /captures
 .externalNativeBuild
 tmp/
-deps/*
-!deps/get_dependencies.cmake
-/*/source/
-!SDL2/source/Android.mk
 /*/.cxx/
-/*/out/
