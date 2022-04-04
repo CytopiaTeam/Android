@@ -46,13 +46,14 @@ endfunction()
 add_android_lib(SDL::SDL SDL2 libSDL2.so "${CMAKE_SOURCE_DIR}/../SDL2/source/sdl/include")
 add_android_lib(SDL::SDL_image SDL2 libSDL2_image.so "${CMAKE_SOURCE_DIR}/../SDL2/source/sdl_image")
 add_android_lib(SDL::TTF SDL2 libSDL2_ttf.so "${CMAKE_SOURCE_DIR}/../SDL2/source/sdl_ttf")
+add_android_lib(ZLIB::ZLIB SDL2 libz.so "${CMAKE_SOURCE_DIR}/../SDL2/source/sdl_image/external/zlib-1.2.12")
 
 # libnoise
 # build/libnoise/intermediates/cmake/release/obj/x86/libnoise.so
 add_android_lib(LibNoise::LibNoise libnoise libnoise.so "${CMAKE_SOURCE_DIR}/../libnoise/source/src/noise")
 # zlib
 # build/zlib/intermediates/cmake/release/obj/x86/libz.so
-add_android_lib(ZLIB::ZLIB zlib libz.so "${CMAKE_SOURCE_DIR}/../zlib/source")
+
 
 # libpng
 # build/libpng/intermediates/cmake/debug/obj/x86/libpng.so
@@ -64,7 +65,7 @@ else ()
     set(LIBPNG_LOCATION ${LIBPNG_DISTRIBUTION_DIR}/${ANDROID_BUILD_DIR}/obj/${ANDROID_ABI}/libpng16d.so)
 endif ()
 add_library(LIBPNG::LIBPNG INTERFACE IMPORTED GLOBAL)
-target_include_directories(LIBPNG::LIBPNG INTERFACE "${CMAKE_SOURCE_DIR}/../libpng/source")
+target_include_directories(LIBPNG::LIBPNG INTERFACE "${CMAKE_SOURCE_DIR}/../SDL2/source/sdl_image/external/libpng-1.6.37")
 target_link_libraries(LIBPNG::LIBPNG INTERFACE ${LIBPNG_LOCATION})
 
 # openal
