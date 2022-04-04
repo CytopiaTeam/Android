@@ -7,7 +7,11 @@ project(build_wrapper)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-string(TOLOWER ${CMAKE_BUILD_TYPE} ANDROID_BUILD_DIR)
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    set(ANDROID_BUILD_DIR "debug")
+else ()
+    set(ANDROID_BUILD_DIR "release")
+endif ()
 
 add_library(Ogg::ogg INTERFACE IMPORTED GLOBAL)
 target_include_directories(Ogg::ogg INTERFACE "${CMAKE_SOURCE_DIR}/../libogg/source/include")

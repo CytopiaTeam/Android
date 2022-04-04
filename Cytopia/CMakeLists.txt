@@ -9,27 +9,14 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/source/external/header_only
 )
-
-## Set some helper variables.
-#string(TOLOWER "${CMAKE_SYSTEM_NAME}" targetSystem)
-#set(projectDir "${CMAKE_CURRENT_LIST_DIR}")
-#set(sourceDir "${projectDir}/source")
-#set(targetName "SimpleExample")
-#set(binDir "${projectDir}/bin")
-#
-## Define executable output dir.
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${binDir}/${targetSystem}")
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${binDir}/${targetSystem}")
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL "${binDir}/${targetSystem}")
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${binDir}/${targetSystem}_debug")
-
-#find_library(OpenGLES2_LIBRARY GLESv2 REQUIRED)
-#find_library(OpenGLES3_LIBRARY GLESv3 REQUIRED)
 find_library(ANDROID_LOG_LIBRARY log REQUIRED)
 find_library(ANDROID_LIBRARY_LIBRARY android REQUIRED)
-find_library(zlib z)
 
-string(TOLOWER ${CMAKE_BUILD_TYPE} ANDROID_BUILD_DIR)
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    set(ANDROID_BUILD_DIR "debug")
+else ()
+    set(ANDROID_BUILD_DIR "release")
+endif ()
 
 function(add_android_lib interface_name libname filename include_dir)
     add_library(${interface_name} INTERFACE IMPORTED GLOBAL)
