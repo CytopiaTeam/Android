@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+tmp/
+deps/*
+!deps/get_dependencies.cmake
+/*/source/
+!SDL2/source/Android.mk
+/*/.cxx/
+/*/out/
