@@ -1,0 +1,25 @@
+[submodule "Cytopia/source"]
+	path = Cytopia/source
+	url = https://github.com/CytopiaTeam/Cytopia.git
+	branch = master
+[submodule "SDL2/source/sdl"]
+	path = SDL2/source/sdl
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "SDL2/source/sdl_image"]
+	path = SDL2/source/sdl_image
+	url = https://github.com/libsdl-org/SDL_image.git
+[submodule "SDL2/source/sdl_ttf"]
+	path = SDL2/source/sdl_ttf
+	url = https://github.com/libsdl-org/SDL_ttf.git
+[submodule "libnoise/source"]
+	path = libnoise/source
+	url = https://github.com/qknight/libnoise.git
+[submodule "openal-soft/source"]
+	path = openal-soft/source
+	url = https://github.com/kcat/openal-soft.git
+[submodule "libogg/source"]
+	path = libogg/source
+	url = https://github.com/xiph/ogg.git
+[submodule "libvorbis/source"]
+	path = libvorbis/source
+	url = https://github.com/xiph/vorbis.git
