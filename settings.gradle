@@ -1,6 +1,2 @@
-include ':SDL2'
-include ':openal-soft'
-include ':libogg'
-include ':libnoise'
-include ':libvorbis'
-include ':Cytopia'
+rootProject.name = 'Cytopia-Android'
+include 'SDL2', 'openal', 'libogg', 'libnoise', 'libvorbis', 'Cytopia'

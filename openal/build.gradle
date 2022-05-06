@@ -1,0 +1,59 @@
+apply plugin: "com.android.library"
+
+android {
+    compileSdkVersion 32
+    // buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 32
+
+        externalNativeBuild {
+            cmake {
+                arguments "-DALSOFT_REQUIRE_OPENSL=OFF",
+                        "-DALSOFT_NO_CONFIG_UTIL=ON",
+                        "-DALSOFT_EXAMPLES=OFF",
+                        "-DALSOFT_UTILS=OFF",
+                        "-DALSOFT_TESTS=OFF",
+                        "-DALSOFT_EMBED_HRTF_DATA=YES",
+                        "-DANDROID_STL=c++_shared"
+            }
+        }
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // abiFilters "armeabi-v7a"
+            abiFilters "x86", "armeabi-v7a", "arm64-v8a"
+
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    buildFeatures {
+        prefabPublishing true
+    }
+    prefab {
+        OpenAL {
+            headers "source/include/AL"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    // androidTestCompile("com.android.support.test.espresso:espresso-core:2.2.2", {
+    //     exclude group: "com.android.support", module: "support-annotations"
+    // })
+    // compile "com.android.support:appcompat-v7:28.0.0"
+    // testCompile "junit:junit:4.12"
+}

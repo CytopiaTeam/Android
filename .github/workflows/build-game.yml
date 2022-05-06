@@ -1,0 +1,50 @@
+name: Build game
+
+on: [ push, pull_request ]
+
+jobs:
+  build-gcc:
+    name: Build Linux
+    env:
+      sccache_CACHE_SIZE: 500M
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Prepare sccache timestamp
+        id: sccache_cache_timestamp
+        shell: cmake -P {0}
+        run: |
+          string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
+          message("::set-output name=timestamp::${current_date}")
+
+      - name: sccache cache files
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~/.cache/sccache
+          key: ubuntu-sccache-${{ steps.sccache_cache_timestamp.outputs.timestamp }}
+          restore-keys: |
+            ubuntu-sccache-
+
+      - name: Install dependencies
+        run: |
+          curl "https://raw.githubusercontent.com/AnotherFoxGuy/ci-scripts/main/install-cmake.sh" | sudo bash
+          curl "https://raw.githubusercontent.com/AnotherFoxGuy/ci-scripts/main/install-sccache.sh" | sudo bash
+        shell: bash
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'gradle'
+
+      - name: Build APK
+        run: bash ./gradlew assembleDebug --stacktrace --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: apk
+          path: build/Cytopia/outputs/apk/debug/Cytopia-debug.apk

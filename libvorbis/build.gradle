@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
+    buildFeatures {
+        prefab true
+    }
+
     compileSdkVersion 32
     // buildToolsVersion "28.0.3"
 
@@ -10,25 +14,14 @@ android {
 
         externalNativeBuild {
             cmake {
-                // /home/talantyyr/Cytopia/Cytopia/platforms/android/build/libogg/intermediates/cmake/debug/obj/x86/libogg.so
-                // "OPENCV_ROOT:=${buildRoot}"
-                // -DCMAKE_LIBRARY_PATH=/home/talantyyr/Cytopia/Cytopia/platforms/android/build/libogg/intermediates/cmake/debug/obj/x86/
-                //OGG_INCLUDE_DIR=/home/talantyyr/Cytopia/Cytopia/external/android/other/ogg/include/ogg/
-                // OGG_ROOT
-                arguments "-DBUILD_SHARED_LIBS=ON"
-                // arguments "-DBUILD_SHARED_LIBS=ON", "-DOGG_INCLUDE_DIR=${project.projectDir}/../build/.externalNativeBuild/libogg/cmake/debug/x86/include/;${project.projectDir}/../../../external/android/other/ogg/include", "-DOGG_LIBRARY=${project.version}/------/build/libogg/intermediates/cmake/debug/obj/${android.os.Build.SUPPORTED_ABIS[0]}/libogg.so"
-                // arguments "-DBUILD_SHARED_LIBS=ON", "-DOGG_INCLUDE_DIR=/home/talantyyr/Cytopia/Cytopia/platforms/android/build/.externalNativeBuild/libogg/cmake/debug/x86/include/;/home/talantyyr/Cytopia/Cytopia/external/android/other/ogg/include", "-DOGG_LIBRARY=/home/talantyyr/Cytopia/Cytopia/platforms/android/build/libogg/intermediates/cmake/debug/obj/x86/libogg.so"
+                arguments "-DBUILD_TESTING=OFF", "-DANDROID_STL=c++_shared"
             }
         }
 
-        ///home/talantyyr/Cytopia/Cytopia/platforms/android/build/.externalNativeBuild/libogg/cmake/debug/x86/include/
-
-// home/talantyyr/Cytopia/Cytopia/platforms/android/build/libogg/intermediates/cmake/debug/obj/x86/libogg.so", "-DOGG_INCLUDE_DIR=/h
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             // abiFilters "armeabi-v7a"
             abiFilters "x86", "armeabi-v7a", "arm64-v8a"
-
         }
     }
     buildTypes {
@@ -41,6 +34,14 @@ android {
     externalNativeBuild {
         cmake {
             path 'CMakeLists.txt'
+        }
+    }
+    buildFeatures {
+        prefabPublishing true
+    }
+    prefab {
+        vorbis {
+            headers "source/include"
         }
     }
 }

@@ -20,8 +20,6 @@ public class MainActivity extends org.libsdl.app.SDLActivity {
                 "SDL2_ttf",
                 "noise",
                 "openal",
-                "vorbis",
-                "ogg",
                 "Cytopia"
         };
     }

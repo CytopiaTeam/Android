@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildFeatures {
+        prefab true
+    }
+
     compileSdkVersion 32
     defaultConfig {
         applicationId "com.cytopia.cytopia"
@@ -14,7 +18,13 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments "-DCYTOPIA_LIB_PREFERENCE=SYSTEM", "-DCYTOPIA_FORCE_SYSTEM_DEPENDENCIES=ON", "-DENABLE_ANGELSCRIPT=OFF", "-DBUILD_TEST=OFF", "-DENABLE_AUDIO=OFF", "-DBUILD_ANDROID=ON"
+                arguments "-DCYTOPIA_LIB_PREFERENCE=SYSTEM",
+                        "-DCYTOPIA_FORCE_SYSTEM_DEPENDENCIES=ON",
+                        "-DENABLE_ANGELSCRIPT=OFF",
+                        "-DBUILD_TEST=OFF",
+                        "-DENABLE_AUDIO=OFF",
+                        "-DBUILD_ANDROID=ON",
+                        "-DANDROID_STL=c++_shared"
             }
         }
 
@@ -54,6 +64,7 @@ dependencies {
     // Uncomment a line in ../gradle.settings as well
     implementation project(':SDL2')
     implementation project(':libnoise')
-    implementation project(':openal-soft')
+    implementation project(':openal')
+    implementation project(':libogg')
     implementation project(':libvorbis')
 }
