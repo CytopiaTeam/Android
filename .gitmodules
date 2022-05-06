@@ -14,8 +14,8 @@
 [submodule "libnoise/source"]
 	path = libnoise/source
 	url = https://github.com/qknight/libnoise.git
-[submodule "openal-soft/source"]
-	path = openal-soft/source
+[submodule "openal/source"]
+	path = openal/source
 	url = https://github.com/kcat/openal-soft.git
 [submodule "libogg/source"]
 	path = libogg/source

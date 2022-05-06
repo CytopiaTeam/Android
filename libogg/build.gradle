@@ -10,7 +10,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments "-DBUILD_SHARED_LIBS=ON"
+                arguments "-DBUILD_TESTING=OFF", "-DANDROID_STL=c++_shared"
             }
         }
 
@@ -31,6 +31,14 @@ android {
     externalNativeBuild {
         cmake {
             path 'CMakeLists.txt'
+        }
+    }
+    buildFeatures {
+        prefabPublishing true
+    }
+    prefab {
+        ogg {
+            headers "source/include"
         }
     }
 }

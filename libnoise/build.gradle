@@ -10,7 +10,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments "-DBUILD_LIBNOISE_UTILS=OFF", "-DBUILD_LIBNOISE_EXAMPLES=OFF"
+                arguments "-DBUILD_LIBNOISE_UTILS=OFF", "-DBUILD_LIBNOISE_EXAMPLES=OFF", "-DANDROID_STL=c++_shared"
             }
         }
 
@@ -31,6 +31,16 @@ android {
     externalNativeBuild {
         cmake {
             path 'CMakeLists.txt'
+        }
+    }
+
+    buildFeatures {
+        prefabPublishing true
+    }
+
+    prefab {
+        noise {
+            headers "source/src/noise"
         }
     }
 }

@@ -14,7 +14,7 @@ android {
         }
         externalNativeBuild {
             cmake {
-                arguments "-DANDROID_APP_PLATFORM=android-16", "-DANDROID_STL=c++_static"
+                arguments "-DANDROID_APP_PLATFORM=android-16", "-DANDROID_STL=c++_shared"
             }
         }
     }
@@ -27,6 +27,26 @@ android {
     externalNativeBuild {
         cmake {
             path 'CMakeLists.txt'
+        }
+    }
+    buildFeatures {
+        prefabPublishing true
+    }
+    prefab {
+        png {
+            headers "source/sdl_image/external/libpng-1.6.37"
+        }
+        zlib {
+            headers "source/sdl_image/external/zlib-1.2.12"
+        }
+        SDL2 {
+            headers "source/sdl/include"
+        }
+        SDL2_image {
+            headers "source/sdl_image"
+        }
+        SDL2_ttf {
+            headers "source/sdl_ttf"
         }
     }
 }
