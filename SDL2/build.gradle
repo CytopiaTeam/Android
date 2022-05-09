@@ -34,10 +34,10 @@ android {
     }
     prefab {
         png {
-            headers "source/sdl_image/external/libpng-1.6.37"
+            headers "source/sdl_image/external/libpng"
         }
         zlib {
-            headers "source/sdl_image/external/zlib-1.2.12"
+            headers "source/sdl_image/external/zlib"
         }
         SDL2 {
             headers "source/sdl/include"
